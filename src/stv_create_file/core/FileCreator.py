@@ -185,7 +185,7 @@ class FileCreator:
                     content = f"{prefix} {left_paren}NEW FILE{right_paren} 创建\"{os.path.basename(path)}\" {left_paren}END CREATE{right_paren}\n"
                 else:
                     content = f"{prefix} {left_paren}NEW FILE{right_paren} {os.path.basename(path)} {left_paren}END CREATE{right_paren}\n"
-                    content += f"{prefix} {left_paren} The coding which you want is {self.encoding} not support wide character {right_paren}"
+                    content += f"{prefix} {left_paren} The coding which you want is {self.encoding} not support wide character {right_paren}\n"
                 content += f"{prefix} {left_paren} {get_format_time()} {right_paren}\n"
 
                 if self.develop:
