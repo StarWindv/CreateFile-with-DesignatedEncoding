@@ -185,10 +185,7 @@ def whats_new(version: str="")->dict or None:
             "0.0.1": "The initial version of the project, no changes",
             "0.0.2": "Fixed the problem of metadata line ending newline character",
             "0.0.3": "Added a method to modify the language parameter, fixed some known problems, and then ate pork ribs",
-            "0.0.4": "Fixed the problem of prompt text index exception"
-                      "Added \"Add author function\""
-                      "Added \"WHat's New?\"(which is what you see now)"
-                      "Then ate small onion stir-fried tofu with rice",
+            "0.0.4": "Fixed the problem of prompt text index exception\nAdded \"Add author function\"\nAdded \"WHat's New?\"(which is what you see now)\nThen ate small onion stir-fried tofu with rice",
         }
     if version in update_info:
         return update_info[version]
