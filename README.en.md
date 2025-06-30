@@ -1,24 +1,31 @@
+Here is the English translation of the README.md file:
+
+---
+
+```markdown
 # CreateFile with Designated Encoding ✨
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/StarWindv/CreateFile-with-DesignatedEncoding/blob/main/LICENSE)
 [![PyPI Version](https://img.shields.io/pypi/v/stv_create_file)](https://pypi.org/project/stv_create_file/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/stv_create_file)](https://pypi.org/project/stv_create_file/)
 
-[中文文档](./README.md)
+[中文](./README.md)
 
 **CreateFile with Designated Encoding** is a powerful command-line tool for creating files with specified encoding formats, supporting custom metadata tags and multi-language prompts.
 
-> Create Some File with Designated Encoding
+> Create files with your specified encoding
 
 ## 🌟 Core Features
 
-- **Specify File Encoding** - Create files with various encodings including UTF-8, GBK, Big5, etc.
+- **Specify File Encoding** - Create files in UTF-8, GBK, Big5, and other encoding formats
 - **Metadata Tags** - Customize metadata format in the first line of files
-- **Multi-language Support** - Automatically adapts to English/Chinese interfaces
-- **Encoding Verification** - Auto-detect file encoding after creation
+- **Multi-language Support** - Auto-adapt to Chinese/English interfaces
+- **Encoding Verification** - Automatically detect file encoding after creation
 - **Exclusive Mode** - Prevent accidental overwriting of existing files
-- **Verbose Logging** - Optional detailed output mode
-- **User Configuration** - Save preferences to config file
+- **Verbose Logging** - Optional verbose output mode
+- **User Configuration** - Save preferences to config files
+- **Author Information** - Add author attribution in metadata
+- **Changelog** - View version update history
 
 ## 🚀 Installation
 
@@ -51,40 +58,74 @@ newfile [file_path] [options] # Full command
 | Option           | Shortcut | Default | Description                        |
 |------------------|----------|---------|------------------------------------|
 | `--encoding`     | `-e`     | `utf-8` | File encoding format               |
-| `--prefix`       | `-p`     | `#`     | File header prefix                 |
+| `--prefix`       | `-p`     | `#`     | First line prefix                  |
 | `--left-paren`   | `-l`     | `<\|`   | Left metadata tag                  |
 | `--right-paren`  | `-r`     | `\|>`   | Right metadata tag                 |
+| `--add-author`   | `-a`     | `''`    | Add author info in metadata        |
 | `--monopolize`   | `-m`     | `False` | Exclusive mode (prevent overwrite) |
 | `--coding-check` | `-cc`    | `False` | Verify encoding after creation     |
 | `--verbose`      | `-v`     | `False` | Verbose output mode                |
-| `--version`      | `-V`     | -       | Show version info                  |
-| `--license`      | `-lic`   | -       | Show project license               |
+| `--version`      | `-V`     | -       | Show version information           |
+| `--license`      |          | -       | Show project license               |
+| `--whats-new`    |          | -       | Show program changelog             |
+| `--set-language` | `-sl`    |         | Set prompt language (zh-cn/en-uk)  |
 
 ### Usage Examples
 
 1. **Create Basic File**
+
    ```bash
    create example.txt
    ```
 
 2. **Specify File Encoding**
+
    ```bash
    nf data.csv -e gbk
    ```
 
 3. **Custom Metadata Format**
+
    ```bash
    newfile config.ini -p "// " -l "{{" -r "}}"
    ```
 
 4. **Create in Exclusive Mode**
+
    ```bash
    create important.log -m
    ```
 
-5. **Create with Encoding Verification**
+5. **Create and Verify Encoding**
+
    ```bash
-   nf report.txt -e big5 -cc -v
+   nf report.txt -e utf-8-sig -cc -v
+   ```
+
+6. **Add Author Information**
+
+   ```bash
+   nf poem.txt -a "Li Bai"
+   ```
+
+7. **View Changelog**
+
+   ```bash
+   newfile --whats-new latest
+   ```
+
+8. **Switch to English Interface**
+
+   ```bash
+   create -sl english
+   ```
+
+### Special Notes
+
+1. **Adding Newlines in Metadata Tags**
+
+   ```bash
+   nf test.txt -l "#n<| " -p ""
    ```
 
 ## ⚙️ Configuration File
@@ -92,15 +133,17 @@ newfile [file_path] [options] # Full command
 Configuration path: `~/.stv_project/config.json`
 
 **Default Configuration:**
+
 ```json
 {
-    "lang": "English",
+    "lang": "zh-cn",
     "verbose": false
 }
 ```
 
-**Configurable Items:**
-- `lang`: Interface language (`English`/`zh-cn`)
+**Configurable Options:**
+
+- `lang`: Interface language (`zh-cn`/`en-uk`)
 - `verbose`: Enable verbose output by default
 
 ## 📂 Project Structure
@@ -115,12 +158,12 @@ CreateFile-with-DesignatedEncoding/
     └── stv_create_file/
         ├── core/
         │   ├── __init__.py
-        │   ├── FileCreator.py    # File creation core logic
-        │   └── stv_parse.py      # CLI argument parsing
+        │   ├── FileCreator.py    # Core file creation logic
+        │   └── stv_parse.py      # Command-line argument parsing
         ├── main.py               # Program entry point
-        ├── mul_lang/
+        ├── mul_lang/             # Multi-language support
         │   ├── __init__.py
-        │   └── change_text.py    # Multi-language support
+        │   └── change_text.py    
         └── utils/
             ├── __init__.py
             ├── GetConfig.py      # Configuration management
@@ -133,9 +176,10 @@ CreateFile-with-DesignatedEncoding/
 
 ## 📜 License
 
-This project is licensed under [MIT License](https://github.com/StarWindv/CreateFile-with-DesignatedEncoding/blob/main/LICENSE)
+This project is licensed under the [MIT License](https://github.com/StarWindv/CreateFile-with-DesignatedEncoding/blob/main/LICENSE)
 
-## 🤝 Contribution Guidelines
+## 🤝 Contributing
 
 Contributions via Issues or Pull Requests are welcome!  
-Project URL: [GitHub Repository](https://github.com/StarWindv/CreateFile-with-DesignatedEncoding)
+Project Repository: [GitHub Repository](https://github.com/StarWindv/CreateFile-with-DesignatedEncoding)
+```
