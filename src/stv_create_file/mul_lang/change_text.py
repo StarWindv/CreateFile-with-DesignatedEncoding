@@ -1,5 +1,7 @@
 from stv_utils import is_ch
 from stv_create_file.utils.GetConfig import start_process
+from sys import argv as sys_argv
+import os
 
 
 configer = start_process()
@@ -12,16 +14,17 @@ if configer.lang.lower() == "en-uk" \
     def is_ch()->bool:
         return False
 
-def parse_text(function_name: str)->dict:
+
+def parse_text(function_name: str=None, args: str= "")->dict:
     if function_name is None:
         return {}
     func = globals().get(function_name)
     if func and callable(func):
-        return func()
+        return func(args)
     return {}
 
 
-def stv_parse()->dict:
+def stv_parse(*args, **kwargs)->dict:
     if is_ch() or use_chinese:
         text = {
             "description": "本程序以用户指定的编码格式创建一些文件",
@@ -35,7 +38,11 @@ def stv_parse()->dict:
             "version": "输出项目版本号",
             "license": "输出项目许可证",
             "verbose": "创建文件时使用详细模式输出结果",
-            "lang": "设置程序提示信息语言"
+            "lang": "设置程序提示信息语言",
+            "epilog": "您可以使用\"#n\"来表示\"\\n\", 以此来在元数据中加入新的换行符."
+                      f"您还可以使用 {os.path.basename(sys_argv[0])} --whats-new latest来查看最新更新",
+            "author": "在元数据末尾增加一行作者信息",
+            "whats_new": "显示程序更新日志"
         }
     else:
         text = {
@@ -50,11 +57,15 @@ def stv_parse()->dict:
             "version": "Output project version number",
             "license": "Output project license",
             "verbose": "Output results in detailed mode when creating files",
-            "lang": "Set the language of the program prompt information"
+            "lang": "Set the language of the program prompt information",
+            "epilog": "You can use \"#n\" to represent \"\\n\", so as to add a new line in the metadata",
+            "author": "Add a line of author information at the end of the metadata",
+            "whats_new": "Show program update log"
         }
     return text
 
-def auto()->dict:
+
+def auto(*args, **kwargs)->dict:
     if is_ch() or use_chinese:
         text = {
             "new": "创建器已启动",
@@ -67,7 +78,8 @@ def auto()->dict:
         }
     return text
 
-def initialize()->dict:
+
+def initialize(*args, **kwargs)->dict:
     if is_ch() or use_chinese:
         text = {
             "coding": {
@@ -119,7 +131,7 @@ def initialize()->dict:
     return text
 
 
-def file_coding_check():
+def file_coding_check(*args, **kwargs)->dict:
     if is_ch() or use_chinese:
         text = {
             "coding": [
@@ -138,7 +150,8 @@ def file_coding_check():
         }
     return text
 
-def create_one_file():
+
+def create_one_file(*args, **kwargs)->dict:
     if is_ch() or use_chinese:
         text = {
             "creating": "正在创建文件: ",
@@ -156,3 +169,26 @@ def create_one_file():
             "Exception": "An unexpected error occurred: "
         }
     return text
+
+
+def whats_new(version: str="")->dict or None:
+    if is_ch() or use_chinese:
+        update_info = {
+            "0.0.1": "项目的初始版本，无改动",
+            "0.0.2": "修复了元数据行尾换行符的问题",
+            "0.0.3": "增加了修改语言的参数方法, 修复了一些已知问题, 然后吃了排骨",
+            "0.0.4": "修复了提示文本索引异常的问题\n新增了\"添加作者功能\"\n新增了\"WHat's New?\"(就是你看到的这个)\n然后吃了小葱拌豆腐就米饭",
+        }
+        # 你问我为什么要发癫嘛？安啦安啦，反正没人看
+    else:
+        update_info = {
+            "0.0.1": "The initial version of the project, no changes",
+            "0.0.2": "Fixed the problem of metadata line ending newline character",
+            "0.0.3": "Added a method to modify the language parameter, fixed some known problems, and then ate pork ribs",
+            "0.0.4": "Fixed the problem of prompt text index exception\n\
+                      Added \"Add author function\"\nAdded \"WHat's New?\"\
+                      (which is what you see now)\nThen ate small onion stir-fried tofu with rice",
+        }
+    if version in update_info:
+        return update_info[version]
+    return None
