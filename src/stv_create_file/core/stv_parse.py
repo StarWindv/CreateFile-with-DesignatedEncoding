@@ -20,8 +20,8 @@ def arg_check(short_cut: str = '', full_arg: str = '')->bool:
     for args in sys_argv:
         if (args.startswith("-")
                 and short_cut in args
-                and not args.startswith("--")
-                or args == full_arg)\
+                and not args.startswith("--")) \
+                or args == full_arg \
                 or use_verbose:
             """
             因为 argparse 的短参数可以合并
