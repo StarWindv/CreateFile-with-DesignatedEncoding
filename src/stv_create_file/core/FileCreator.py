@@ -32,7 +32,7 @@ class FileCreator:
         self.args = stv_parse()
         # 需要直接映射的属性列表
         self.attribute = ['path', 'encoding', 'prefix',
-                          'left_paren', 'right_paren',
+                          'left_paren', 'right_paren', "add_author",
                           'monopolize', 'coding_check',
                           'version', 'license', 'verbose', 'Debug']
         self.args_allot()
@@ -47,6 +47,8 @@ class FileCreator:
         self.path = [re_sub(r"\\", "/", path) for path in self.path[:]]
         self.develop = True if (self.Debug and self.verbose) else False
         self.coding_check = True if self.develop else self.coding_check
+        self.left_paren = re_sub(r"#n", "\n", self.left_paren)
+        self.right_paren = re_sub(r"#n", "\n", self.right_paren)
 
 
     def debug_pause(self, function_name: str = "Default")->None:
@@ -93,7 +95,7 @@ class FileCreator:
         for folder in folder_arr:
             if not os.path.exists(folder):
                 log_print(color = 33, prefix = "[Warn]",
-                          msg = f"{text["folder"][0]}{os.path.basename(self.path[ptr])}{text["folder"][1]}{folder}{text["folder"][2]}")
+                          msg = f"{text["folder"]["Err"][0]}{os.path.basename(self.path[ptr])}{text["folder"]["Err"][1]}{folder}{text["folder"]["Err"][2]}")
                 nonexistent.append(folder)
             ptr += 1
 
@@ -146,6 +148,7 @@ class FileCreator:
                         prefix: str = '# ',
                         left_paren: str = '<|',
                         right_paren: str = '|>',
+                        author: str = '',
                         monopolize = False,
                         verbose: bool = False)->None:
         """
@@ -187,6 +190,8 @@ class FileCreator:
                     content = f"{prefix} {left_paren}NEW FILE{right_paren} {os.path.basename(path)} {left_paren}END CREATE{right_paren}\n"
                     content += f"{prefix} {left_paren} The coding which you want is {self.encoding} not support wide character {right_paren}\n"
                 content += f"{prefix} {left_paren} {get_format_time()} {right_paren}\n"
+                if author:
+                    content += f"{prefix} {left_paren} By {author} {right_paren}\n"
 
                 if self.develop:
                     log_print(color = 32, prefix = "[Dev]", msg = f"'{content.rstrip()}'")
@@ -213,6 +218,7 @@ class FileCreator:
                                  prefix = self.prefix,
                                  left_paren = self.left_paren,
                                  right_paren = self.right_paren,
+                                 author=self.add_author,
                                  monopolize = self.monopolize,
                                  verbose = self.verbose)
 
