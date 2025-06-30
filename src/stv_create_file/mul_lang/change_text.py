@@ -34,7 +34,8 @@ def stv_parse()->dict:
             "coding_check": "是否在创建后检测文件编码",
             "version": "输出项目版本号",
             "license": "输出项目许可证",
-            "verbose": "创建文件时使用详细模式输出结果"
+            "verbose": "创建文件时使用详细模式输出结果",
+            "lang": "设置程序提示信息语言"
         }
     else:
         text = {
@@ -48,7 +49,8 @@ def stv_parse()->dict:
             "coding_check": "Whether to detect file encoding after creation",
             "version": "Output project version number",
             "license": "Output project license",
-            "verbose": "Output results in detailed mode when creating files"
+            "verbose": "Output results in detailed mode when creating files",
+            "lang": "Set the language of the program prompt information"
         }
     return text
 
