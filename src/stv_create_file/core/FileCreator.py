@@ -10,7 +10,7 @@ import codecs
 
 class FileCreator:
     def __new__(cls, *args, **kwargs):
-        if arg_check(short_cut = "v"):
+        if arg_check(short_cut = "v", full_arg="verbose"):
             """
             这一步是因为参数还没解析
             所以使用argv来检测是否启用了详细模式
@@ -24,7 +24,7 @@ class FileCreator:
 
     def __del__(self):
         gc.collect()
-        if arg_check(short_cut = "v"):
+        if arg_check(short_cut = "v", full_arg="verbose"):
             log_print(color = 90, prefix = "|>", msg = parse_text(function_name="auto")["del"])
 
 
@@ -76,7 +76,7 @@ class FileCreator:
                 exit(-1)
             self.encoding = "utf-8"
 
-        if not self.prefix.isascii():
+        if not self.prefix.isascii() and not can_encode(encoding = self.encoding):
             log_print(color = 31, prefix = "[Err]", msg = f"{text["prefix"]["Err"]}{self.prefix}", sep = '  ')
             continue_check = input(f"[Tips] {text["prefix"]["Tips"]}")
             if 'y' not in continue_check.lower():
