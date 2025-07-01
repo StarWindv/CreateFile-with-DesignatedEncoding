@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "stv_create_file"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
     { name = "星灿长风v(StarWindv)", email = "starwindv.stv@gmail.com"}
 ]
