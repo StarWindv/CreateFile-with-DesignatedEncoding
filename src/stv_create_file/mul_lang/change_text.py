@@ -178,6 +178,7 @@ def whats_new(version: str="")->dict or None:
             "0.0.2": "修复了元数据行尾换行符的问题",
             "0.0.3": "增加了修改语言的参数方法, 修复了一些已知问题, 然后吃了排骨",
             "0.0.4": "修复了提示文本索引异常的问题\n新增了\"添加作者功能\"\n新增了\"WHat's New?\"(就是你看到的这个)\n然后吃了小葱拌豆腐就米饭",
+            "0.0.5": "累积修复版本, 修改了部分文本格式显示不美观的问题\n修复了注释检测时机\n吃了青椒鸡蛋饼"
         }
         # 你问我为什么要发癫嘛？安啦安啦，反正没人看
     else:
@@ -186,6 +187,7 @@ def whats_new(version: str="")->dict or None:
             "0.0.2": "Fixed the problem of metadata line ending newline character",
             "0.0.3": "Added a method to modify the language parameter, fixed some known problems, and then ate pork ribs",
             "0.0.4": "Fixed the problem of prompt text index exception\nAdded \"Add author function\"\nAdded \"WHat's New?\"(which is what you see now)\nThen ate small onion stir-fried tofu with rice",
+            "0.0.5": "Cumulative repair version, modified some text format display problems\nFixed the comment detection timing\nAte green pepper egg pancake"
         }
     if version in update_info:
         return update_info[version]
