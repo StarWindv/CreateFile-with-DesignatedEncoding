@@ -1,8 +1,3 @@
-Here is the English translation of the README.md file:
-
----
-
-```markdown
 # CreateFile with Designated Encoding ✨
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/StarWindv/CreateFile-with-DesignatedEncoding/blob/main/LICENSE)
@@ -182,4 +177,3 @@ This project is licensed under the [MIT License](https://github.com/StarWindv/Cr
 
 Contributions via Issues or Pull Requests are welcome!  
 Project Repository: [GitHub Repository](https://github.com/StarWindv/CreateFile-with-DesignatedEncoding)
-```
