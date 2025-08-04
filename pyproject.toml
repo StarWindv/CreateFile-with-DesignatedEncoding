@@ -17,7 +17,7 @@ classifiers = [
 ]
 dependencies = [
     "chardet",
-    "stv_utils"
+    "stv_utils==0.0.6"
 ]
 urls = { "Homepage" = "https://github.com/StarWindv/CreateFile-with-DesignatedEncoding" }
 
@@ -28,3 +28,4 @@ newfile = "stv_create_file.main:main"
 
 [tool.setuptools]
 license-files = []
+
